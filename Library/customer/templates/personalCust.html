@@ -7,7 +7,7 @@ head %} {{ super() }}
 </style>
 {% endblock %} {% block content %}
 <h1>All customers in library</h1>
-{%- for cust in PrintAllCustomer %} 
+{%- for cust in print_all_customer %} 
   {% if cust.Name == customername  %}
   <div class="row row-cols-1 row-cols-md-4 g-4">
     <div class="col">

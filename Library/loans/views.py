@@ -9,7 +9,7 @@ from Library import db
 loan_table = Blueprint('Loans' ,__name__,template_folder="templates")
 
 @loan_table.route("/AddLoan/", methods=['GET', 'POST'])
-def AddLoan():
+def add_new_loan():
     dayLoan = datetime.utcnow().date()
     id_cust = (request.form.get('CustID'))
     for id in Customers.query.filter_by(CusomerID=request.form.get("CustID")):
@@ -33,16 +33,16 @@ def AddLoan():
     return render_template('FormLoan.html', Onlybook = Books.query.all())
 
 @loan_table.route("/AllLoans/",methods=['GET'])
-def AllLoanBook():
-    return render_template('ShowAllLoan.html', AllLoanBook=Loans.query.all())
+def print_all_loan():
+    return render_template('ShowAllLoan.html', print_all_loan=Loans.query.all())
 
 @loan_table.route("/ReturnBook/<LoansID>", methods=['DELETE', 'GET'])
-def ReturnBook(LoansID=0):
+def return_book(LoansID=0):
         DeleteFromDB = Loans.query.get(int(LoansID))
         if int(LoansID) > 0:
             db.session.delete(DeleteFromDB)
             db.session.commit()
-            return render_template('ShowAllLoan.html', AllLoanBook=Loans.query.all()) 
+            return render_template('ShowAllLoan.html', print_all_loan=Loans.query.all()) 
         return render_template('Eror.html')
 
 @loan_table.route("/lateLoans/", methods = ['GET'])
