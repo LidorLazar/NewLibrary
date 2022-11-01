@@ -8,8 +8,7 @@ class Customers(db.Model):
     Age = db.Column('Age', db.Integer)
     CustomersToLoans = db.relationship('Loans', backref='customers')
                        
-    def __init__(self, CusomerID, Name, City, Age):
-        self.CusomerID = CusomerID
+    def __init__(self, Name, City, Age):
         self.Name = Name.title()
         self.City = City.title()
         self.Age = Age

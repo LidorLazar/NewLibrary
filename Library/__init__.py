@@ -31,7 +31,7 @@ with app.app_context():
 from Library.books.model import Books
 from Library.customer.model import Customers
 
-customer_one = Customers(CusomerID=1 ,Name='lidor', City='yavne', Age=22)
+customer_one = Customers(Name='lidor', City='yavne', Age=22)
 book_one = Books(NameBook='Peter Pan', Author='J. M. Barrie', YearPublished=1990, Type=1)
 
 from sqlalchemy.exc import IntegrityError

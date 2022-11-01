@@ -1,4 +1,4 @@
-from Library import app,db,customer_one
+from Library import app
 from flask import render_template
 from Library.customer.model import Customers
 
