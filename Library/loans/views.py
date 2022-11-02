@@ -7,7 +7,7 @@ from Library import db
 
 
 loan_table = Blueprint('Loans' ,__name__,template_folder="templates")
-
+# Add new loan in library 
 @loan_table.route("/AddLoan/", methods=['GET', 'POST'])
 def add_new_loan():
     dayLoan = datetime.utcnow().date()
@@ -31,11 +31,11 @@ def add_new_loan():
             else:
                 return render_template('Eror.html')
     return render_template('FormLoan.html', Onlybook = Books.query.all())
-
+# Show all the loans library
 @loan_table.route("/AllLoans/",methods=['GET'])
 def print_all_loan():
     return render_template('ShowAllLoan.html', print_all_loan=Loans.query.all())
-
+# Return book and delete from the loan list 
 @loan_table.route("/ReturnBook/<LoansID>", methods=['DELETE', 'GET'])
 def return_book(LoansID=0):
         DeleteFromDB = Loans.query.get(int(LoansID))
@@ -44,7 +44,7 @@ def return_book(LoansID=0):
             db.session.commit()
             return render_template('ShowAllLoan.html', print_all_loan=Loans.query.all()) 
         return render_template('Eror.html')
-
+# Show all the late loans in library
 @loan_table.route("/lateLoans/", methods = ['GET'])
 def late():
     results = []

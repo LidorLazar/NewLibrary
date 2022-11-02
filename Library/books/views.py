@@ -5,7 +5,7 @@ from Library.books.model import Books
 
 books_table= Blueprint('Books' ,__name__,template_folder="templates")
 
-
+# Add new book to library.
 @books_table.route('/addBook/', methods=['POST', 'GET'])
 def add_book():
     if request.method == 'POST':
@@ -19,7 +19,7 @@ def add_book():
         else:
             return render_template('Eror.html')
     return render_template('AddBook.html')
-
+# Show all books in library or show only book you search.
 @books_table.route('/Book/<bookname>', methods=['GET'])
 @books_table.route('/Book/', methods=['GET', 'POST'])
 def print_all_books(bookname=''):
@@ -29,7 +29,7 @@ def print_all_books(bookname=''):
                 bookname = OneBook.NameBook
                 return render_template('personalBook.html', bookname=bookname, print_all_books=Books.query.all())
     return render_template('ShowAllBooks.html', print_all_books = Books.query.all())
-
+# Delete book in library.
 @books_table.route("/deleteBook/<id>",methods=['DELETE','GET'])
 def delete_book(id=0):
     book = Books.query.get(id)
