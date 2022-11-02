@@ -10,7 +10,7 @@ customer_table = Blueprint('Customers' ,__name__,template_folder="templates")
 def add_customer():
     if request.method == 'POST':
         if 100 >= int(request.form['Age']) >= 1:
-            NewCustomer = Customers(Name=request.form['Name'],
+            NewCustomer = Customers(CusomerID=request.form['custID'],Name=request.form['Name'],
                                     City=request.form['City'], Age=request.form['Age'])
             db.session.add(NewCustomer)
             db.session.commit()

@@ -27,7 +27,7 @@ def add_new_loan():
                                     ReturnDate=ReturnDate)
                     db.session.add(NewLoans)
                     db.session.commit()
-                return render_template('ShowAllLoan.html', AllLoanBook=Loans.query.all()) 
+                return render_template('ShowAllLoan.html', print_all_loan=Loans.query.all()) 
             else:
                 return render_template('Eror.html')
     return render_template('FormLoan.html', Onlybook = Books.query.all())
