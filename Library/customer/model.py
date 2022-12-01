@@ -14,5 +14,6 @@ class Customers(db.Model):
         self.City = City.title()
         self.Age = Age
 
+
 with app.app_context():
     db.create_all()

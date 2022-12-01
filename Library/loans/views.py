@@ -34,7 +34,11 @@ def add_new_loan():
 # Show all the loans library
 @loan_table.route("/AllLoans/",methods=['GET'])
 def print_all_loan():
-    return render_template('ShowAllLoan.html', print_all_loan=Loans.query.all())
+    loans1 = []
+    for loan in Loans.query.all():
+        loans1.append({"Name": loan.customers.Name , "LoanDate": loan.LoanDate, "ReturnDate":loan.ReturnDate, "BookName": loan.books.NameBook})
+    return loans1
+    # return render_template('ShowAllLoan.html', print_all_loan=Loans.query.all())
 # Return book and delete from the loan list 
 @loan_table.route("/ReturnBook/<LoansID>", methods=['DELETE', 'GET'])
 def return_book(LoansID=0):

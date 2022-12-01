@@ -13,5 +13,7 @@ class Books(db.Model):
         self.Author = Author.title()
         self.YearPublished = YearPublished
         self.Type = Type
+
+        
 with app.app_context():
     db.create_all()

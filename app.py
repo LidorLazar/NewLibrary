@@ -1,6 +1,6 @@
 from Library import app
 from flask import render_template
-from Library.customer.model import Customers
+
 
 
 @app.route('/')
